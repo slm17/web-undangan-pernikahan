@@ -41,7 +41,9 @@
         <h1>Nana & Nani</h1>
         <p>Akan melangsungkan resepsi pernikahan dalam:</p>
         <div class="simply-countdown"></div>
-        <a href="#undangan" class="btn btn-lg mt-4">Lihat Undangan</a>
+        <a href="#undangan" class="btn btn-lg mt-4" onclick="enableScroll()"
+          >Lihat Undangan</a
+        >
       </main>
     </section>
 
@@ -131,7 +133,7 @@
             </div>
 
             <!-- icon heart -->
-            <span class="heart"><i class="bi bi-heart-fill"></i></span>
+            <!-- <span class="heart"><i class="bi bi-heart-fill"></i></span> -->
 
             <div class="col-lg-6">
               <div class="row">
@@ -232,6 +234,83 @@
       </div>
     </section>
 
+    <section id="story" class="story">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-10 text-center">
+            <span>Bagaimana Cinta Kami Bersemi</span>
+            <h2>Cerita Kami</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi
+              ducimus pariatur, molestias itaque ullam dignissimos?
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <ul class="timeline">
+              <li>
+                <div
+                  class="timeline-img"
+                  style="background-image: url(img/IMG_1.jpg)"
+                ></div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h3>Pertama Bertemu</h3>
+                    <span>1 April 2020</span>
+                  </div>
+                  <div class="timeline-body">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Tempore atque repudiandae totam dolores, eaque temporibus!
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li class="timeline-inverted">
+                <div
+                  class="timeline-img"
+                  style="background-image: url(https://picsum.photos/300/300)"
+                ></div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h3>Mulai Serius</h3>
+                    <span>1 April 2022</span>
+                  </div>
+                  <div class="timeline-body">
+                    <p>
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                      Itaque laboriosam, ipsam fuga dolorum voluptatum
+                      recusandae. Eum, illum a!
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div
+                  class="timeline-img"
+                  style="background-image: url(https://picsum.photos/301/301)"
+                ></div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h3>Tunangan</h3>
+                    <span>1 April 2023</span>
+                  </div>
+                  <div class="timeline-body">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Odit architecto saepe ut officia voluptatem natus, est
+                      error debitis placeat.
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
@@ -251,6 +330,46 @@
           seconds: {singular: "detik", plural: "detik"},
         },
       });
+    </script>
+
+    <script>
+      const stickyTop = document.querySelector(".sticky-top");
+      const offcanvas = document.querySelector(".offcanvas");
+
+      offcanvas.addEventListener("show.bs.offcanvas", function () {
+        stickyTop.style.overflow = "visible";
+      });
+
+      offcanvas.addEventListener("hidden.bs.offcanvas", function () {
+        stickyTop.style.overflow = "hidden";
+      });
+    </script>
+
+    <script>
+      const rootElement = document.querySelector(":root");
+
+      function disableScroll() {
+        scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
+        window.onscroll = function () {
+          window.scrollTo(screenTop, scrollLeft);
+        };
+
+        rootElement.style.scrollBehavior = "auto";
+      }
+
+      function enableScroll() {
+        window.onscroll = function () {};
+        rootElement.style.scrollBehavior = "smooth";
+
+        localStorage.setItem("opened", "true");
+      }
+
+      if (!localStorage.getItem("opened")) {
+        disableScroll();
+      }
+      disableScroll();
     </script>
   </body>
 </html>
